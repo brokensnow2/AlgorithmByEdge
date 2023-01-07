@@ -14,8 +14,8 @@ typedef struct {
 SqStack *init()
 {
     int *a = (int *)malloc(INIT_SIZE * sizeof(int));
+    //注意先开辟再使用指针
     SqStack *s = (SqStack *)malloc(sizeof(SqStack));
-    //Linux不能直接使用指针，会出现段错误，需要先开辟一块空间
     s->base = a;
     s->top = s->base;
     s->stacksize = INIT_SIZE;
