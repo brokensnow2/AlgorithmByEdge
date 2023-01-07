@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #define INIT_SIZE 100
 #define CREMENT 20
 #define ERROR -1
@@ -90,7 +91,7 @@ int main()
 {
     int a;
     //SqStack *S= (SqStack *)malloc(sizeof(SqStack));
-    struct SqStack stack;
+    SqStack stack;
 	InitStack(stack);
     scanf("%d",&a);
     while(a)
