@@ -23,8 +23,9 @@ typedef struct singlelist
 //头插法
 void invert(SingleList *L)
 {
-	Node *p= L->first;
-    Node *q,*temp;
+	Node *p = L->first;
+    Node *q;
+    L->first = NULL;
     while(p)
     {
 		q = p->link;
