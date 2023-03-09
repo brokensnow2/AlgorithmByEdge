@@ -3,6 +3,11 @@
 #define InitSize 100
 #define Ture 1
 #define False 0
+
+
+/*
+顺序存储
+*/
 typedef struct{
     int *data;
     int Max;
