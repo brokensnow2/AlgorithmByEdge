@@ -31,9 +31,29 @@ void PrintList(LNode* l)
     }
 }
 
+void Del_X(LNode *l,int x)
+{
+    LNode *h = l;
+    LNode *p=l->next;
+    if(p==NULL)
+    {
+        return;
+    }
+    if(p->data==x)
+    {
+        l->next=p->next;//防止断链
+        free(p);
+        Del_X(l,x); //不能是l->next,防止2，3，3，这种情况
+    }
+    else{
+        Del_X(l->next,x);
+    }
+}
+
 int main()
 {
 	LNode *head = (LNode*)malloc(sizeof(LNode));
     head = List_TailInsert(head);
+    Del_X(head,3);
     PrintList(head);
 }
