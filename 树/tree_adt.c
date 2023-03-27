@@ -94,21 +94,13 @@ BTNode *PreInCreat(int a[],int b[], int l1,int h1,int l2,int h2)
 	int llen = i - l2;//左子树长度
       int rlen = h2 - i;//右
 	if(llen)
-      {
       	root->lchild = PreInCreat(a,b,l1+1,l1+llen,l2,l2+llen-1);
-      }
       else
-      {
             root->lchild = NULL;
-      }
       if(rlen)
-      {
             root->rchild = PreInCreat(a,b,h1-rlen+1,h1,h2-rlen+1,h2);
-      }
       else
-      {
             root->rchild = NULL;
-      }
       return root;
 }
 
