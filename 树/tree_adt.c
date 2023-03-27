@@ -85,7 +85,7 @@ else return Size(p->lchild)+Size(p->rchild)+1;
 
 //先序和中序确定一棵二叉树
 BTNode *PreInCreat(int a[],int b[], int l1,int h1,int l2,int h2)
-{
+{     
       BTNode* root = (BTNode*)malloc(sizeof(BTNode));
 	root->element = a[l1];
       int i = l2;
