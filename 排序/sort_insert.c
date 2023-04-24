@@ -1,6 +1,6 @@
 #include<stdlib.h>
 #include<stdio.h>
-/**
+
 void InsertSort_New(int a[], int n)
 {
     int i,j,temp,low,high,mid;
@@ -14,8 +14,11 @@ void InsertSort_New(int a[], int n)
             mid = (low + high )/2;
             if(a[mid]>temp)
                 high = mid - 1;
-            if(a[mid]<temp)
+            else if(a[mid]<temp)
             	low = mid + 1;
+            // 注意
+            else
+            	break;
         }
         printf("%d;",mid);
         if(a[mid]>temp)
@@ -24,7 +27,7 @@ void InsertSort_New(int a[], int n)
         		a[j+1] = a[j];
             a[mid] = temp;
         }
-        if(a[mid]<=temp)
+    	else //不可以写if和上面if并列
         {
             for(j=i-1;j>mid;j--)
         		a[j+1] = a[j];
@@ -32,8 +35,8 @@ void InsertSort_New(int a[], int n)
         }
     }
 }
-*/
-void InsertSort_New(int a[], int n)
+
+void InsertSort_New1(int a[], int n)
 {
     int i,j,temp,low,high,mid;
     for(i=1;i<n;i++)
@@ -59,7 +62,7 @@ void InsertSort_New(int a[], int n)
         }
         else
         {
-            for(j=i-1;j>=mid+1;j--)
+            for(j=i-1;j>mid;j--)
                 a[j+1] = a[j];
             a[mid+1] = temp;    
         }
@@ -98,6 +101,7 @@ void shellSort(int arr[], int n) {
         for (int i = gap; i < n; i++) {
             int temp = arr[i];
             int j;
+            //与书上不同。gap前全是每个子表的第一个元素；j>=gap保证了j－gap>=0且从后往前比
             for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
                 arr[j] = arr[j - gap];
             }
@@ -113,7 +117,9 @@ int main()
     int i;
     int a[] = {1,3,5,7,2,4,8,5,9};
     //InsertSort(a,9);
-    InsertSort_New(a,9);
+    //InsertSort_New(a,9);
+    //InsertSort_New1(a,9);
+    shellSort(a,9);
     printf("\n");
     for(i=0;i<9;i++)
     {
