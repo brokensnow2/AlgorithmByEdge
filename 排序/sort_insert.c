@@ -1,6 +1,6 @@
 #include<stdlib.h>
 #include<stdio.h>
-
+/**
 void InsertSort_New(int a[], int n)
 {
     int i,j,temp,low,high,mid;
@@ -9,12 +9,12 @@ void InsertSort_New(int a[], int n)
         temp=a[i];
         low=0;
         high=i-1;
-        while(low<=high && a[mid] != temp)
+        while( low<=high )
         {
             mid = (low + high )/2;
             if(a[mid]>temp)
                 high = mid - 1;
-            else if(a[mid]<temp)
+            if(a[mid]<temp)
             	low = mid + 1;
         }
         printf("%d;",mid);
@@ -30,9 +30,42 @@ void InsertSort_New(int a[], int n)
         		a[j+1] = a[j];
             a[mid+1] = temp;    
         }
-
     }
 }
+*/
+void InsertSort_New(int a[], int n)
+{
+    int i,j,temp,low,high,mid;
+    for(i=1;i<n;i++)
+    {
+        temp=a[i];
+        low=0;
+        high=i-1;
+        while( low<=high )
+        {
+            mid = (low + high )/2;
+            if(a[mid]>temp)
+                high = mid - 1;
+            else if(a[mid]<temp)
+                low = mid + 1;
+            else
+                break;
+        }
+        if(a[mid]>temp)
+        {
+            for(j=i-1;j>=mid;j--)
+                a[j+1] = a[j];
+            a[mid] = temp;
+        }
+        else
+        {
+            for(j=i-1;j>=mid+1;j--)
+                a[j+1] = a[j];
+            a[mid+1] = temp;    
+        }
+    }
+}
+
 
 void InsertSort(int a[], int n)
 {
@@ -52,6 +85,25 @@ void InsertSort(int a[], int n)
             }
         }
         a[j+1] = temp;
+    }
+}
+
+void shellSort(int arr[], int n) {
+    // 定义间隔序列
+    int gap = n/2;
+  
+    // 迭代间隔序列，每次减小一半
+    while (gap > 0) {
+        // 对每个间隔进行插入排序
+        for (int i = gap; i < n; i++) {
+            int temp = arr[i];
+            int j;
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                arr[j] = arr[j - gap];
+            }
+            arr[j] = temp;
+        }
+        gap /= 2;
     }
 }
 
