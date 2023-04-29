@@ -28,6 +28,7 @@ void quickSort(int arr[], int low, int high) {
     }
 }
 
+//书上
 int partition1(int arr[], int low, int high) {
     int pivot = arr[low];
     while(low<high)
