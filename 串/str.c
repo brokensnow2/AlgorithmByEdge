@@ -22,6 +22,7 @@ int isEqual(const Str* str1, const Str* str2) {
 }
 
 Str* concat(const Str* str1, const Str* str2) {
+    Str* result = (Str*)malloc(sizeof(Str));
     int totalLength = str1->length + str2->length;
     result->ch = (char*)realloc(result->ch, (totalLength + 1) * sizeof(char));
     strcpy(result->ch, str1->ch);
