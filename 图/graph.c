@@ -111,6 +111,12 @@ int calculateOutDegree(G* graph, int vertex) {
     return outDegree;
 }
 
+void addWeightedEdge(G* graph, int source, int destination, int weight) {
+    graph->matrix[source][destination] = weight;
+    // 如果是无向图，还需将对应位置的值设为权值
+    // graph->matrix[destination][source] = weight;
+}
+
 
 void printGraph(G* graph) {
     printf("Number of nodes: %d\n", graph->numNodes);
@@ -118,7 +124,7 @@ void printGraph(G* graph) {
     for (int i = 0; i < graph->numNodes; i++) {
         printf("Vertex %d: %d\n", i, graph->vertexInfo[i]);
     }
-    printf("Adjacency Matrix:\n");
+    printf("Adjacency Matrix:\n")`
     for (int i = 0; i < graph->numNodes; i++) {
         for (int j = 0; j < graph->numNodes; j++) {
             printf("%d ", graph->matrix[i][j]);

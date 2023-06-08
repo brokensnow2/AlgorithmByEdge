@@ -31,4 +31,11 @@ void insertVertex(G* graph, int x);
 
 void printGraph(G* graph);
 
+int calculateInDegree(G* graph, int vertex);
+
+int calculateOutDegree(G* graph, int vertex);
+
+void addWeightedEdge(G* graph, int source,
+					int destination, int weight);
+
 #endif  // GRAPH_H
