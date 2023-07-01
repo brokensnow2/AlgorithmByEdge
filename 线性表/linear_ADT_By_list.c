@@ -49,7 +49,7 @@ void Del_X(LNode *l,int x)
         Del_X(l->next,x);
     }
 }
-
+/**
 int main()
 {
 	LNode *head = (LNode*)malloc(sizeof(LNode));
@@ -57,3 +57,4 @@ int main()
     Del_X(head,3);
     PrintList(head);
 }
+*/

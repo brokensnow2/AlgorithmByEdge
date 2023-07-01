@@ -14,6 +14,7 @@ typedef struct{
     int length;
 }List;
 
+
 int *create()
 {
 	return (int*)malloc(sizeof(int)*InitSize);
@@ -51,7 +52,7 @@ int Delete(List* l, int i)
     l->length--;
     return Ture;
 }
-
+/**
 int main()
 {
     List* l = (List*)malloc(sizeof(List));
@@ -65,5 +66,12 @@ int main()
     {
         printf("%d",l->data[i]);
     }
+    Delete(l,3);
+    printf("\n");
+    for(int i=0;i<l->length;i++)
+    {
+        printf("%d",l->data[i]);
+    }  
     printf("\nThe Length is %d\n",l->length);
 }
+*/
