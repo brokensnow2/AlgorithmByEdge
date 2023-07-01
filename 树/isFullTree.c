@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define bool int
+#define true 1
+#define false 0
 
 // 定义二叉树结构体
 struct TreeNode {
@@ -21,4 +24,10 @@ bool isFullBinaryTree(struct TreeNode* root) {
     } else {
         return false;
     }
+}
+
+int main()
+{
+    struct TreeNode* tree = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    tree->val = 5;
 }

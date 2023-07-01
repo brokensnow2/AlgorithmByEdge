@@ -11,4 +11,5 @@ void initString(Str* str, const char* source);
 void destroyString(Str* str);
 
 Str* concat(const Str* str1, const Str* str2) ;
+
 #endif
