@@ -11,6 +11,7 @@ typedef struct {
     int *top;//栈頂指针
     int stacksize;
 }SqStack;
+
 SqStack *init()
 {
     int *a = (int *)malloc(INIT_SIZE * sizeof(int));
