@@ -36,7 +36,7 @@ int Insert(List *list,int i,int e)
     }
     for(int j=list->length;j>=i;j--)
     {
-        list->data[j] = list->data[i];
+        list->data[j] = list->data[j-1];
     }
     list->data[i-1] = e;
     list->length++;
