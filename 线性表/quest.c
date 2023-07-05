@@ -75,6 +75,8 @@ void DelRepeatElement(List* list)
     }
 }
 
+
+
 int main()
 {
     //initialize
@@ -94,7 +96,8 @@ int main()
     }
 	printf("\n");
     //
-
+	
+    Insert(l,2,2);
     for(int i=0;i<l->length;i++)
     {
     	printf("%d\t",l->data[i]);        
@@ -108,7 +111,7 @@ int main()
     	printf("%d\t",l->data[i]);        
     } 
     printf("\n");
-    
+
     //  
     printf("%d\n",deleteMinValue(l));
 

@@ -26,10 +26,11 @@ List* expand(List *l)
     return realloc(l->data,sizeof(int)*(l->Max));//caution!!
 }
 
-int Insert(List *list,int i,int e)
+//i是指位置,位序
+void Insert(List *list,int i,int e)
 {
 	if(i<1 || i>list->length)
-    	return False;
+    	return ;
     if(list->length>list->Max)
     {
         list=expand(list);
@@ -40,7 +41,6 @@ int Insert(List *list,int i,int e)
     }
     list->data[i-1] = e;
     list->length++;
-    return Ture;
 }
 
 int Delete(List* l, int i)
