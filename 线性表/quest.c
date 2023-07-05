@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include"linear_ADT.c"
 
+//逆序思想，排序思想，如何合并表
+
 //QUEST1
 int deleteMinValue(List* list)
 {
@@ -76,6 +78,30 @@ void DelRepeatElement(List* list)
 }
 
 
+//QUEST11
+//思想同题7,适用于有序表，如果无序可以先排序再调用FindMid
+int FindMid(List* list1,List* list2)
+{
+    int x = 0;
+    int y = 0; //两个指针
+    int mid;//存中位数的
+    //A,B 等长
+    for(int i = 0;i<list1->length;i++)
+    {
+		if(list1->data[x] <= list2->data[y])
+        {
+			mid = list1->data[x];
+            x++;
+        }
+        else
+        {
+            mid = list2->data[y];
+            y++;
+        }
+    }
+    return mid;
+}
+
 
 int main()
 {
@@ -88,8 +114,16 @@ int main()
         l->length++;
     }
 
+	List* l2 = (List*)malloc(sizeof(List));
+    l2->data = create();
+    for(int i=0;i<10;i++)
+    {
+        l2->data[i]=i+1;
+        l2->length++;
+    }
+
 	//
-    Del_All_X(l,3);
+    //Del_All_X(l,3);
     for(int i=0;i<l->length;i++)
     {
     	printf("%d\t",l->data[i]);        
@@ -97,7 +131,7 @@ int main()
 	printf("\n");
     //
 	
-    Insert(l,2,2);
+    //Insert(l,2,2);
     for(int i=0;i<l->length;i++)
     {
     	printf("%d\t",l->data[i]);        
@@ -105,14 +139,16 @@ int main()
     printf("\n");
 
     //
-    DelRepeatElement(l);
+    //DelRepeatElement(l);
     for(int i=0;i<l->length;i++)
     {
     	printf("%d\t",l->data[i]);        
     } 
     printf("\n");
 
-    //  
+	printf("%d\n",FindMid(l,l2));
+
+    //
     printf("%d\n",deleteMinValue(l));
 
 
