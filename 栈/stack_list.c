@@ -11,9 +11,9 @@ typedef struct stackByLode
 typedef struct stack
 {
     Lode* top;
-}
+}S;
 
 int main()
 {
-    
+
 }

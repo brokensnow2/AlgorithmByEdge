@@ -8,7 +8,7 @@ typedef struct stackByarray stack;
 struct stackByarray
 {
 	int data[50];
-	int top;
+	int top; //数组下标表示栈頂
 };
 
 int main()

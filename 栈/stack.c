@@ -15,7 +15,7 @@ typedef struct {
 
 SqStack *init()
 {
-    //堆中开辟一块连续的空间，就是data[SIZE]
+    //堆中开辟一块连续的空间，其实就是data[SIZE]
     int *a = (int *)malloc(INIT_SIZE * sizeof(int));
     //注意先开辟再使用指针
     SqStack *s = (SqStack *)malloc(sizeof(SqStack));
