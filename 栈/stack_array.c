@@ -3,6 +3,7 @@
 #include <stdlib.h>
 typedef struct stackByarray stack;
 
+//栈的四种类型:满增栈、满减栈、空增栈、空减栈
 //王道书
 struct stackByarray
 {
