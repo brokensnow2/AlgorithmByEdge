@@ -6,6 +6,7 @@
 #define ERROR -1
 #define OK 1
 
+//数据结构书
 typedef struct {
     int *base;//栈底指针
     int *top;//栈頂指针
@@ -14,6 +15,7 @@ typedef struct {
 
 SqStack *init()
 {
+    //堆中开辟一块连续的空间，就是data[SIZE]
     int *a = (int *)malloc(INIT_SIZE * sizeof(int));
     //注意先开辟再使用指针
     SqStack *s = (SqStack *)malloc(sizeof(SqStack));
@@ -22,6 +24,7 @@ SqStack *init()
     s->stacksize = INIT_SIZE;
     return s;
 }
+
 int InitStack(SqStack *s)
 {
     printf(".....");

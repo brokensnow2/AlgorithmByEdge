@@ -20,6 +20,18 @@ int *create()
 	return (int*)malloc(sizeof(int)*InitSize);
 }
 
+List *init()
+{
+	List* l = (List*)malloc(sizeof(List));
+    l->data = create();
+    for(int i=0;i<10;i++)
+    {
+        l->data[i]=i;
+        l->length++;
+    }
+    return l;
+}
+
 List* expand(List *l)
 {
     l->Max = l->Max + 50;
@@ -52,6 +64,16 @@ int Delete(List* l, int i)
     l->length--;
     return Ture;
 }
+
+void print(List *l)
+{
+    for(int i=0;i<l->length;i++)
+    {
+    	printf("%d\t",l->data[i]);        
+    }
+	printf("\n");
+}
+
 /**
 int main()
 {

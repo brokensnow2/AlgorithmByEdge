@@ -106,7 +106,7 @@ int FindMid(List* list1,List* list2)
 
 //QUEST13
 //时间复杂度nlogn，空间复杂度logn。。。
-FindMinestNumNotInList(List* list)
+void FindMinestNumNotInList(List* list)
 {
 	//quickSort1(list->data,0,list->length-1);
     for(int i = 0;i<list->length; i++)
@@ -136,11 +136,8 @@ int main()
 
 	//
     //Del_All_X(l,3);
-    for(int i=0;i<l->length;i++)
-    {
-    	printf("%d\t",l->data[i]);        
-    }
-	printf("\n");
+    //print(l);
+	//printf("\n");
     //
 	
     //Insert(l,2,2);

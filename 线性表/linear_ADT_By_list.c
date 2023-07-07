@@ -53,7 +53,7 @@ void Del_X(LNode *l,int x)
 }
 
 
-//QUEST2
+//QUEST3
 //Reverse函数要放在Ignore前面哦
 void Reverse_printf(LNode* list)
 {
@@ -108,6 +108,34 @@ void DeleteMinValue(LNode *list)
     }
 }
 
+//QUEST5
+//从第一个结点依次头插到头结点后
+LNode* ReverseByHeadInsert(LNode* list)
+{
+	LNode *p = list->next;
+    list->next = NULL;
+    while(p != NULL)
+    {
+        LNode *temp = p->next;
+        p->next = list->next;
+		list->next = p;
+        p = temp;
+    }
+    return list;
+}
+
+//QUEST10
+LNode* divide(LNode* list)
+{
+    LNode* list1 = (LNode*)malloc(sizeof(LNode));
+    LNode* list2 = (LNode*)malloc(sizeof(LNode));
+    int i = 1;
+    LNode* p = list->next;
+    while(p != NULL)
+    {
+		
+    }
+}
 
 int main()
 {

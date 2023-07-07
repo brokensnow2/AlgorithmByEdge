@@ -21,7 +21,7 @@ typedef struct singlelist
 }SingleList;//头结点
 
 //头插法
-void invert(SingleList *L)
+void ReverseByInsert(SingleList *L)
 {
 	Node *p = L->first;
     Node *q;
