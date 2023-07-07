@@ -103,6 +103,18 @@ int FindMid(List* list1,List* list2)
 }
 
 
+
+//QUEST13
+//时间复杂度nlogn，空间复杂度logn。。。
+FindMinestNumNotInList(List* list)
+{
+	//quickSort1(list->data,0,list->length-1);
+    for(int i = 0;i<list->length; i++)
+    {
+        //if()
+    }
+}
+
 int main()
 {
     //initialize
