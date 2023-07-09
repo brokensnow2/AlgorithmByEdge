@@ -141,23 +141,17 @@ int main()
     //
 	
     //Insert(l,2,2);
-    for(int i=0;i<l->length;i++)
-    {
-    	printf("%d\t",l->data[i]);        
-    }
-    printf("\n");
+    //print(l);
+	//printf("\n");
+    //
 
     //
     //DelRepeatElement(l);
-    for(int i=0;i<l->length;i++)
-    {
-    	printf("%d\t",l->data[i]);        
-    } 
-    printf("\n");
+
+    print(l);
 
 	printf("%d\n",FindMid(l,l2));
 
-    //
     printf("%d\n",deleteMinValue(l));
 
 
