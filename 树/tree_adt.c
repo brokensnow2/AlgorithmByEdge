@@ -5,16 +5,12 @@
 二叉树
 */
 typedef struct btnode { 
-
       int element; 
-      struct btnode* lchild, *rchild;
-
+      struct btnode* lchild, *rchild;//为什么不写BTNode* lchild...
 }BTNode; 
 
 typedef struct binarytree{ 
-
-BTNode* root; 
-
+	BTNode* root; 
 }BinaryTree;
 
 /*
@@ -30,31 +26,22 @@ int lh, rh;//left_height,right
      else return rh;
 }
 
-/*
-非递归求二叉树高度
-#include <stdio.h>
-#include <stdlib.h>
-
-// 定义二叉树结构体
-struct BTNode {
-    int val;
-    struct BTNode* lchild;
-    struct BTNode* rchild;
-};
-
-int getHeight(struct BTNode* root) {
+//QUEST5
+//非递归
+int getHeight(BTNode* root) {
     if (root == NULL) {
         return 0;
     }
     int height = 0;
-    struct BTNode* queue[1000];
+    BTNode* queue[100];
     int front = 0, rear = 0;
     queue[rear++] = root; 
     while (front != rear) {
         int size = rear - front;//一层有多少个结点
-        while (size--) { //将该层孩子结点入栈
-            struct BTNode* node = queue[front++];
-            //使下次外层while循环正确，即算对下层结点个数，size=rear－front
+        while (size--) { //将该层孩子结点入队列(数组)
+            BTNode* node = queue[front++];
+            //使下次外层while循环正确，即算对下层结点个数，
+            //size=rear－front
             if (node->lchild) {
                 queue[rear++] = node->lchild;
             }
@@ -67,7 +54,6 @@ int getHeight(struct BTNode* root) {
     return height;
 }
 
-*/
 
 /*
 求结点个数
@@ -79,10 +65,13 @@ if (!p) return 0;
 else return Size(p->lchild)+Size(p->rchild)+1;
 } 
 
-/*
-遍历
-*/
+//遍历
+void PreOrder(BinaryTree* r)
+{
+	
+}
 
+//QUEST6
 //先序和中序确定一棵二叉树
 BTNode *PreInCreat(int a[],int b[], int l1,int h1,int l2,int h2)
 {     
@@ -104,6 +93,47 @@ BTNode *PreInCreat(int a[],int b[], int l1,int h1,int l2,int h2)
       return root;
 }
 
+//QUEST9
+void swap(BTNode* r)
+{
+      if(b)
+      {
+            swap(r->lchild);
+            swap(r->rchild);
+            BTNode* temp = r->lchild;
+            r->lchild = r->rchild;
+            r->rchild = temp;
+      }
+}
+
+//QUEST10
+/**
+int getKthNode(BTNode* r,int k)
+{
+      int count = 0;
+	SqStack* s = init();
+      InitStack(s);
+      while(r || !isEmpty(s))
+      {
+            Push(s,r);
+            count++;
+            if(count == k)
+            {
+                  BTNode *ans = Pop(s);
+                  return ans->element;
+            }
+            r = r->lchild;
+            else
+      	{
+            	r = Pop(s);
+            	r = r->rchild;
+      	}      
+      }
+      return -1;
+}
+*/
+
+
 void print(BTNode *p)
 {
       if (p)
@@ -114,7 +144,7 @@ void print(BTNode *p)
       }
 }
 
-int main()
+BinaryTree* createDemo()
 {
 	BinaryTree *r = (BinaryTree*)malloc(sizeof(BinaryTree));
 	BTNode *node1 = (BTNode*)malloc(sizeof(BTNode));
@@ -126,10 +156,20 @@ int main()
       BTNode *node3 = (BTNode*)malloc(sizeof(BTNode));
       node3->element = 3;
       node1->rchild = node3;
+      BTNode *node4 = (BTNode*)malloc(sizeof(BTNode));
+      node4->element = 4;
+      node3->rchild = node4;
+      return r;
+}
+
+int main()
+{
+      BinaryTree *r = createDemo();
 	printf("depth is %d\n",depth(r->root));
       printf("nodes are %d\n",Size(r->root));
       print(r->root);
 
+	printf("depth is %d\n",getHeight(r->root));
 
       //test preincreate
       int a[6] = {0,1,2,3,4,5};
