@@ -26,8 +26,3 @@ bool isFullBinaryTree(struct TreeNode* root) {
     }
 }
 
-int main()
-{
-    struct TreeNode* tree = (struct TreeNode*)malloc(sizeof(struct TreeNode));
-    tree->val = 5;
-}
