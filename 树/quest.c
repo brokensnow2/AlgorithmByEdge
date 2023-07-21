@@ -33,30 +33,31 @@ int getHeight(BTNode* root) {
 
 //QUEST6
 //先序和中序确定一棵二叉树
-BTNode *PreInCreat(int a[],int b[], int l1,int h1,int l2,int h2)
+BTNode* preInCreat(int a[],int b[], int l1,int h1,int l2,int h2)
 {     
-      BTNode* root = (BTNode*)malloc(sizeof(BTNode));
+    BTNode* root = (BTNode*)malloc(sizeof(BTNode));
 	root->element = a[l1];
-      int i = l2;
-      while(b[i] != root->element)
-      	i++;
+    int i = l2;
+    while(b[i] != root->element)
+    	i++;
 	int llen = i - l2;//左子树长度
-      int rlen = h2 - i;//右
+    int rlen = h2 - i;//右
 	if(llen)
-      	root->lchild = PreInCreat(a,b,l1+1,l1+llen,l2,l2+llen-1);
-      else
-            root->lchild = NULL;
-      if(rlen)
-            root->rchild = PreInCreat(a,b,h1-rlen+1,h1,h2-rlen+1,h2);
-      else
-            root->rchild = NULL;
-      return root;
+    	root->lchild = preInCreat(a,b,l1+1,l1+llen,l2,l2+llen-1);
+    else
+        root->lchild = NULL;
+    if(rlen)
+        root->rchild = preInCreat(a,b,h1-rlen+1,h1,h2-rlen+1,h2);
+    else
+        root->rchild = NULL;
+
+    return root;
 }
 
 //QUEST9
 void swap(BTNode* r)
 {
-      if(b)
+      if(r)
       {
             swap(r->lchild);
             swap(r->rchild);
@@ -93,6 +94,56 @@ int getKthNode(BTNode* r,int k)
 }
 */
 
+static int wpl = 0;
+//QUEST19
+int getTreeWPL(BTNode* root,int deep)
+{
+	if(root == NULL)
+    {
+        return false;
+    }
+    if(root->lchild == NULL && root->rchild == NULL)
+    {
+        wpl += deep * root->element;
+    }
+    if(root->lchild != NULL )
+    {
+        getTreeWPL(root->lchild,deep+1);
+    }
+    if(root->rchild != NULL)
+    {
+        getTreeWPL(root->rchild,deep+1);
+    }
+    return wpl;
+}
+
+//QUEST20
+//数一定是叶子结点
+//操作符一定是非叶结点
+void tree2Express(BTNode* root,int deep)
+{
+    if(root == NULL)
+    	return;
+    if(root->lchild == NULL && root->rchild == NULL)
+    	print(root); //数
+    else
+    {
+        if(deep > 1)
+        	printf("(");
+        tree2Express(root->lchild,deep+1);
+        printf("%s",root->element); //操作符
+        tree2Express(root->rchild,deep+1);
+        printf(")");
+    }
+}
+
+//附：如何将中缀表达式变成二叉树
+void exp2Tree(char* exp)
+{
+
+}
+
+
 int main()
 {
     BinaryTree *r = createDemo();
@@ -105,6 +156,6 @@ int main()
     //test preincreate
     int a[6] = {0,1,2,3,4,5};
     int b[6] = {0,4,2,1,5,3};
-    BTNode* root2 = PreInCreat(a,b,1,5,1,5);
+    BTNode* root2 = preInCreat(a,b,1,5,1,5);
     print(root2);
 }
