@@ -137,6 +137,34 @@ LNode* divide(LNode* list)
     }
 }
 
+//QUEST--2015
+void DeleteRepeteAbs(LNode* list,int n)
+{
+    int a[n+1];//long是关键字
+    for(int i = 0;i < n+1; i++)
+    {
+        a[i] = 0;
+    }
+    LNode *node = list->next;
+    LNode *pre = list;
+    while(node->next != NULL)
+    {
+		if(a[abs(node->data)] == 0)
+        {
+            a[abs(node->data)] = 1;
+            pre = node;
+        	node = node -> next;
+        }
+        else
+        {
+            LNode *r = node->next;
+			pre->next = r;
+            free(node);
+            node = r;
+        }
+    }
+}
+
 int main()
 {
     //头指针            分配的堆内存:头结点
