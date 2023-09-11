@@ -95,7 +95,7 @@ int getKthNode(BTNode* r,int k)
 */
 
 static int wpl = 0;
-//QUEST19
+//QUEST19 --2014
 int getTreeWPL(BTNode* root,int deep)
 {
 	if(root == NULL)
@@ -117,7 +117,7 @@ int getTreeWPL(BTNode* root,int deep)
     return wpl;
 }
 
-//QUEST20
+//QUEST20 --2017
 //数一定是叶子结点
 //操作符一定是非叶结点
 void tree2Express(BTNode* root,int deep)
@@ -130,9 +130,11 @@ void tree2Express(BTNode* root,int deep)
     {
         if(deep > 1)
         	printf("(");
+
         tree2Express(root->lchild,deep+1);
         printf("%s",root->element); //操作符
         tree2Express(root->rchild,deep+1);
+
         printf(")");
     }
 }
