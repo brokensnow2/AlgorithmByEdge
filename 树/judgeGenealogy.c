@@ -39,10 +39,10 @@ void func(BTNode* node)
     int generation = 1;
     total_generation(node,generation);
     printf("%d\n",total);
-    BTNode *node = smallest_node;
-    while (node != NULL)
+    BTNode *node1 = smallest_node;
+    while (node1 != NULL)
     {
-        printf("%d\n",node->element);
-        node = node->rchild;
+        printf("%d\n",node1->element);
+        node1 = node1->rchild;
     }
 }
