@@ -124,7 +124,7 @@ void printGraph(G* graph) {
     for (int i = 0; i < graph->numNodes; i++) {
         printf("Vertex %d: %d\n", i, graph->vertexInfo[i]);
     }
-    printf("Adjacency Matrix:\n")`
+    printf("Adjacency Matrix:\n");
     for (int i = 0; i < graph->numNodes; i++) {
         for (int j = 0; j < graph->numNodes; j++) {
             printf("%d ", graph->matrix[i][j]);
