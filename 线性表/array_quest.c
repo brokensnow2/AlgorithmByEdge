@@ -115,6 +115,27 @@ void FindMinestNumNotInList(List* list)
     }
 }
 
+//天勤QUEST5
+void ByHeadValueSort(List* list)
+{
+    int temp;
+    int i = 1,n = list->length-1;
+    while (i < list->length/2 && n > list->length/2)
+    {
+        if(list->data[i] < list->data[0])
+        {
+			i++;
+        }
+        else
+        {
+            temp = list->data[i];
+            list->data[i] = list->data[n];
+            list->data[n] = temp;
+            n--;
+        }
+    }
+}
+
 int main()
 {
     //initialize
