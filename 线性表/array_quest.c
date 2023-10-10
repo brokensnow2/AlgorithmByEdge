@@ -136,6 +136,28 @@ void ByHeadValueSort(List* list)
     }
 }
 
+//天勤Ch.5 Q1
+//将所有非0元素移到数组前端
+void sortArray(int a[])
+{
+	int i = 0,count = 0;
+    int n = length(a);
+    while(i<length(a) && count < length(a))
+    {
+        if (a[i] == 0)
+        {
+			a[i] = a[--n];
+            a[n] = 0;
+        }
+        else
+        {
+            i++;
+        }
+        count++;
+    }
+    
+}
+
 int main()
 {
     //initialize
