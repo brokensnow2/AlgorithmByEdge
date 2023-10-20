@@ -132,7 +132,7 @@ void tree2Express(BTNode* root,int deep)
         	printf("(");
 
         tree2Express(root->lchild,deep+1);
-        printf("%s",root->element); //操作符
+        printf("%d",root->element); //操作符
         tree2Express(root->rchild,deep+1);
 
         printf(")");

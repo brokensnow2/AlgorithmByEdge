@@ -1,4 +1,4 @@
-//2022
+//QUEST 21 [2022]
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
@@ -10,6 +10,7 @@ typedef struct{
     int ElemNum;
 }SQT;
 
+//中序遍历改
 bool judgeIsSearchTree(SQT *node,int k,int val)
 {
 
