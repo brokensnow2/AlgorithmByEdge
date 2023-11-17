@@ -61,3 +61,35 @@ bool judgeIsSearchTree(SQT *node,int k,int val)
  * 
 */
 
+bool judgeIsSearchRoute(int route[])
+{
+	int min = -32768;
+    int max = 32767;
+    if(length(route) <= 2)
+    	return true;
+    for(int i = 1;i < length(route);i++)
+    {
+        //向右走,说明route[i-1]小了，应该作为下界
+        if(route[i] > route[i-1])
+        {
+            //判断route[i]是否满足范围
+            if(route[i] > min && route[i] <max)
+            {
+               min = route[i-1]; 
+            }
+			else
+            	return false;
+        }
+        //向左走，说明route[i-1]大了，应该作为上界
+        if(route[i] < route [i-1])
+        {
+			if(route[i] > min && route[i] < max)
+            {
+               max = route[i-1]; 
+            }
+			else
+            	return false;
+        }
+    }
+    return true;
+}
