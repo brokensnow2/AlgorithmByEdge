@@ -93,3 +93,15 @@ bool judgeIsSearchRoute(int route[])
     }
     return true;
 }
+
+
+/**
+ * 给出关键字，判断是否是二叉排序树查找顺序
+ * 
+ * 
+ * 
+*/
+bool judgeIsSearchRoute1(int route[],int key)
+{
+
+}
