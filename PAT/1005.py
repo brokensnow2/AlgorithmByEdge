@@ -16,6 +16,9 @@ num_to_word = {
 N = input().strip()
 
 # 计算N的各位数字之和
+"""
+sum函数接受一个可迭代对象（在这里是一个生成器表达式），并返回其所有元素的总和。
+"""
 s = sum(int(digit) for digit in N)
 
 # 将和s的每一位数字转换为英文单词，并用空格连接
