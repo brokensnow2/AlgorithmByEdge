@@ -37,7 +37,8 @@ while num > 0 :
 min函数：min函数是Python的内置函数，用于返回给定参数或参数序列中的最小值。
 例如，min(1, 2, 3)将返回1，min([1, 2, 3])也将返回1。
 你还可以提供一个key参数来自定义比较的方式。key参数应该是一个函数，这个函数会被应用到每个参数上，
-然后min函数会返回key函数结果最小的那个参数。例如，min('hello', 'world', key=len)将返回'hello'，
+如果参数是列表，就相当于把每个元素当参数传给函数，将函数返回的结果取最小的那个参数或者元素返回。
+例如，min('hello', 'world', key=len)将返回'hello'，
 因为'hello'的长度（len('hello')）小于'world'的长度。
 
 lambda函数：lambda函数是一种在Python中创建小型匿名函数的方式。
