@@ -35,7 +35,7 @@ def dijkstra(graph, costs, start, end):
     while queue:
         # 从队列中取出当前最短的路径
         (length, cost, node, path) = heapq.heappop(queue)
-        # 如果当前节点没有被访问过
+        # 如果当前节点没有被添加到集合
         if node not in visited:
             # 将当前节点添加到已访问集合中
             visited.add(node)
@@ -43,9 +43,17 @@ def dijkstra(graph, costs, start, end):
             if node == end:
                 # 返回长度，成本和路径
                 return length, cost, path
+            """
+            代码中的 if edge not in visited:
+                    # 将邻居节点添加到队列中
+                    heapq.heappush(queue, (length + edge_length, cost + edge_cost, edge, path + [edge]))
+                    是直接将所有该节点到所有邻居节点加入了优先权队列，
+                    而不是像dijkstra原理的那样去更新源点到每个点的最短路径（也就是少了比较加更新），
+                    因为使用了优先权队列来保证每次取出的都是最小未访问(未加入集合)的节点（其实这步相当于比较加选出）
+            """
             # 遍历当前节点的所有邻居
             for edge, edge_length, edge_cost in graph[node]:
-                # 如果邻居节点没有被访问过
+                # 如果邻居节点没有被添加到集合
                 if edge not in visited:
                     # 将邻居节点添加到队列中
                     heapq.heappush(queue, (length + edge_length, cost + edge_cost, edge, path + [edge]))
