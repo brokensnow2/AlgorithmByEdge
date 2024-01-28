@@ -43,22 +43,22 @@ def Dijsktra(graph,start,end):
     
     # 满了
     if cars[end] == Cmax:
-        # 优先权队列 (花费时间;发送数量;带回数量;起点;路径)
+        # 优先权队列 (花费时间;发送数量;带回数量;已经到达的节点;路径)
         # 带回5辆
-        queue = [(0,0,5,start,[start])]
+        queue = [(0,0,0,start,[start])]
     # 不然是空的
     else:
         # 发送5辆
-        queue = [(0,5,0,start,[start])]
+        queue = [(0,0,0,start,[start])]
     # 访问数组
     visited = set()
     while queue:
         # 弹出最小的cost,send和take的node
         node = heapq.heappop(queue)
-        if node[2] not in visited:
+        if node[3] not in visited:
             # 弹出的添加进visited
             visited.add(node[2])
-            if node[2] == end:
+            if node[3] == end:
                 return node[1],node[2],node[4]
             else:
                 for i in graph[node[3]]:
@@ -67,7 +67,7 @@ def Dijsktra(graph,start,end):
                         if cars[i[0]] > balance:
                             # --send不等于0
                             if node[1] != 0:
-                                result = node[0] - (cars[i[0]] - balance)
+                                result = node[1] - (cars[i[0]] - balance)
                                 # send还有剩:还需要发送
                                 if result > 0:
                                     heapq.heappush(queue,(node[0]+i[1], result, node[2], i[0], node[4]+[i[0]]))
@@ -85,6 +85,11 @@ def Dijsktra(graph,start,end):
                                 if result > 0 :
                                     # 还要带回
                                     heapq.heappush(queue,(node[0]+i[1], node[1], result, i[0], node[4]+[i[0]]))
+                                # 不够，要发送
+                                else:
+                                    heapq.heappush(queue,(node[0]+i[1], abs(result), 0, i[0], node[4]+[i[0]]))
+                            else:
+                                heapq.heappush(queue,(node[0]+i[1], node[1] + (balance - cars[i[0]]), node[2], i[0], node[4]+[i[0]]))
                                     
 
 
@@ -103,4 +108,4 @@ for i in range(M):
     stations[Sj].append((Si,Tij))
 balance = Cmax // 2
 send,take,path = Dijsktra(stations,0,Sp)
-print(f"{send} {'->'.join(path)} {take}")
+print(f"{send} {'->'.join(map(str, path))} {take}")
