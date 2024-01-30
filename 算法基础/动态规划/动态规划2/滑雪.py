@@ -48,3 +48,32 @@ L(i,j)表示从点(ij)出发的最长滑行长度。
 从小到大遍历所有的点。经过一个点(i,j)时，用递推公式求L(,j)
 
 """
+rows, columns = map(int,input().split())
+field = [[] for _ in range(rows)]
+L = []
+for i in range(rows):
+    col = list(map(int,input().split()))
+    for j in range(columns):
+        # 元组：（值，行下标，列下标）
+        L.append((col[j],i,j))
+        # 二维列表(DP矩阵),存的列表：(值(可以不要)，最长滑行长度)
+        field[i].append([col[j],1])
+L.sort()
+
+for i in range(len(L)):
+    # 如果大于下方的点
+    if L[i][1]+1 < rows and L[i][0] > field[L[i][1]+1][L[i][2]][0]:
+        field[L[i][1]][L[i][2]][1] = max(field[L[i][1]][L[i][2]][1],field[L[i][1]+1][L[i][2]][1]+1)
+    # 如果大于上方的点
+    if L[i][0] > field[L[i][1]-1][L[i][2]][0] and L[i][1] > 0:
+        field[L[i][1]][L[i][2]][1] = max(field[L[i][1]][L[i][2]][1],field[L[i][1]-1][L[i][2]][1]+1)
+    # >左侧
+    if L[i][2] > 0 and L[i][0] > field[L[i][1]][L[i][2]-1][0]:
+        field[L[i][1]][L[i][2]][1] = max(field[L[i][1]][L[i][2]][1],field[L[i][1]][L[i][2]-1][1]+1)
+    # 右侧
+    if L[i][2]+1 < columns and L[i][0] > field[L[i][1]][L[i][2]+1][0]:
+        field[L[i][1]][L[i][2]][1] = max(field[L[i][1]][L[i][2]][1],field[L[i][1]][L[i][2]+1][1]+1)
+
+#首先使用max()函数和lambda函数来找到每个子列表中第二个元素最大的元素，然后再使用max()函数和lambda函数来找到这些元素中最大的元素
+max_element = max(max(field, key=lambda x: max(x, key=lambda y: y[1])))
+print(max_element[1])
