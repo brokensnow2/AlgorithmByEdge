@@ -59,17 +59,18 @@ Number of fish expected: 724
 """
 # n个湖
 n = int(input())
-# 小时
-hours = int(input())
-# 每个湖的初始鱼量
-fi = list(map(int,input().split()))
-# 每个时间片鱼减少的量
-di = list(map(int,input().split()))
-# 到下一个湖花的时间片
-ti = list(map(int,input().split()))
-# 总共的时间片
-total_time = int(hours*60/5)
 while n != 0:
+    # 小时
+    hours = int(input())
+    # 每个湖的初始鱼量
+    fi = list(map(int,input().split()))
+    # 每个时间片鱼减少的量
+    di = list(map(int,input().split()))
+    # 到下一个湖花的时间片
+    ti = list(map(int,input().split()))
+    # 总共的时间片
+    total_time = int(hours*60/5)
+
     # 每个湖的三元组
     lakes = [[] for _ in range(n)]
     for i in range(n):
@@ -80,6 +81,10 @@ while n != 0:
             lakes[i].append((lest_fish,i,i+j))
             j += 1
             lest_fish = lest_fish - di[i]
+    
+    # 存储到前i个湖钓鱼的鱼最大数
+    max_sum = []
+
     # 开始枚举:到前i个湖钓鱼
     for i in range(n):
         # 钓鱼的时间片
@@ -105,15 +110,7 @@ while n != 0:
         else:
             for i in temp:
                 sum += i[0]
-        print(sum)
-    n = int(input())
-    # 小时
-    hours = int(input())
-    # 每个湖的初始鱼量
-    fi = list(map(int,input().split()))
-    # 每个时间片鱼减少的量
-    di = list(map(int,input().split()))
-    # 到下一个湖花的时间片
-    ti = list(map(int,input().split()))
-    # 总共的时间片
-    total_time = int(hours*60/5)       
+        max_sum.append(sum)
+    print(max(max_sum))
+    # 下一轮
+    n = int(input())       

@@ -23,4 +23,11 @@ q.put('c')  # 添加元素'c'
 print(q.queue)  # 输出队列：queue(['a', 'b', 'c'])
 q.get()  # 移除队首元素
 print(q.queue)  # 输出队列：queue(['b', 'c'])
-
+# 查看队列的第一个元素
+first_element = q.queue[0]
+print("第一个元素:", first_element)
+# 判断队列是否为空
+if q.empty():
+    print("队列是空的")
+else:
+    print("队列不为空")
