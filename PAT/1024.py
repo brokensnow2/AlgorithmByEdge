@@ -32,6 +32,7 @@ def isPalindromic(num :int) -> bool:
         return True
     else:
         return False
+    
 def add(num :int):
     string = f"{num}"
     N_reversed = int(string[::-1])

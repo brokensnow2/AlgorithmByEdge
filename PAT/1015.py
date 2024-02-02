@@ -17,9 +17,11 @@ Yes
 Yes
 No
 
+解题思路：
+先判断原数是否是素数
+再判断原数在其他进制下的逆的十进制数是否可逆
 """
 
-# 说实话，不明白题意
 
 def is_prime(n):
     if n <= 1:
@@ -42,7 +44,15 @@ def ToOthersRadix(num, radix):
         num = num // radix
     return result
 
+def ToDecRadix(num :str, radix :int) -> int:
+    j = 0
+    result = 0
+    for i in range(len(num)-1,-1,-1):
+        result += int(num[i]) * (D ** j)
+        j += 1
+    return result
 
+ans = []
 data = input().split()
 while int(data[0]) >= 0:
     N = data[0]
@@ -53,13 +63,13 @@ while int(data[0]) >= 0:
         """
         字符串在Python中是不可变的，不能在原地反转字符串。你只能创建一个反向的副本
         """
-        Reversed_N = N[::-1]
-        Reversed_N_int = int(Reversed_N)
-        str2 = ToOthersRadix(Reversed_N_int,D)
-        if str1[::-1] == str2:
-            print("Yes")
+        Reversed_N = str1[::-1]
+        if is_prime(ToDecRadix(Reversed_N,D)):
+            ans.append("Yes")
         else:
-            print("No")
+            ans.append("No")
     else:
-        print("No")
+        ans.append("No")
     data = input().split()
+for i in ans:
+    print(i)
