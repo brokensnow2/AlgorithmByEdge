@@ -34,44 +34,51 @@ Sample Output:
 87654 15 -1
 """
 from collections import defaultdict
-# 头节点地址，节点个数
-startAddress,N = map(int,input().split())
-# 所有节点，使用字典存储，方便查找O(1)
+
+# 定义节点类
+class Node:
+    def __init__(self, address, key, next):
+        self.address = address
+        self.key = key
+        self.next = next
+
+# 读取输入
+startAddress, N = map(int, input().split())
+
+# 使用字典存储所有节点，方便查找
 nodes = defaultdict(list)
-# 存放访问过的节点abs(value)集合
-visited = set()
-# resulting linked list
-result = []
-# removed list. 
-removed = []
-# 初始化
 for _ in range(N):
-    addr,value,next = map(int,input().split())
-    nodes[addr].append(value)
-    nodes[addr].append(next)
-result.append([startAddress,nodes[startAddress][0]])
-visited.add(abs(nodes[startAddress][0]))
-nextAddr = nodes[startAddress][1]
+    addr, value, next = map(int, input().split())
+    nodes[addr] = Node(addr, value, next)
 
+# 初始化结果链表和移除链表
+result = [nodes[startAddress]]
+removed = []
 
-while nextAddr != -1:
-    absoluteValue = abs(nodes[nextAddr][0])
-    if absoluteValue not in visited:
-        result[-1].append(nextAddr)
-        result.append([nextAddr,nodes[nextAddr][0]])
-        visited.add(absoluteValue)
+# 存放访问过的节点abs(value)集合
+visited = {abs(nodes[startAddress].key)}
+
+# 当前节点
+current = nodes[startAddress].next
+
+# 遍历链表
+while current != -1:
+    node = nodes[current]
+    # 如果节点的绝对值已经出现过，将其添加到移除链表
+    if abs(node.key) in visited:
+        removed.append(node)
     else:
-        if removed != []:
-            removed[-1].append(nextAddr)
-        removed.append([nextAddr,nodes[nextAddr][0]])
-    nextAddr = nodes[nextAddr][1]
+        # 否则，将其添加到结果链表，并将其绝对值添加到已访问集合
+        result.append(node)
+        visited.add(abs(node.key))
+    current = node.next
 
-# 修正链表next地址
-result[-1].append(-1)
-removed[-1].append(-1)
+# 输出结果链表
+for i in range(len(result) - 1):
+    print(f"{result[i].address:05} {result[i].key} {result[i+1].address:05}")
+print(f"{result[-1].address:05} {result[-1].key} -1")
 
-# 输出
-for i in result:
-    print(f"{i[0]:05} {i[1]} {i[2]}")
-for i in removed:
-    print(f"{i[0]:05} {i[1]} {i[2]}")
+# 输出移除链表
+for i in range(len(removed) - 1):
+    print(f"{removed[i].address:05} {removed[i].key} {removed[i+1].address:05}")
+print(f"{removed[-1].address:05} {removed[-1].key} -1")
