@@ -1,19 +1,25 @@
 # 定义DFS函数
-def DFS(graph, start, visited=None):
-    if visited is None:
-        visited = set()
+def DFS(graph, start, visited :set, kidMap :list):
     visited.add(start)
+    kidMap.append(start)
     # 访问节点邻居
     for next in graph[start] - visited:
-        DFS(graph, next, visited)
-    return visited
+        DFS(graph, next, visited, kidMap)
 
-# 定义图
+# 定义图:非连通
 graph = {'A': set(['B', 'C']),
-         'B': set(['A', 'D', 'E']),
-         'C': set(['A', 'F']),
-         'D': set(['B']),
-         'E': set(['B', 'F']),
-         'F': set(['C', 'E'])}
+         'B': set(['A']),
+         'C': set(['A']),
+         'D': set(['E']),
+         'E': set(['D', 'F']),
+         'F': set(['E'])}
 
-print(DFS(graph, 'A'))
+# 遍历;要for循环
+visited = set()
+kidMaps = []
+for node in graph:
+    if node not in visited:
+        kidMap = []
+        DFS(graph, node, visited, kidMap)
+        kidMaps.append(kidMap)
+print(kidMaps)
