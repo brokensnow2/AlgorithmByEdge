@@ -87,7 +87,12 @@ for node in relatedMap:
             gangs.append(gang)
 # 输出
 print(len(gangs))
+result = []
 for i in gangs:
     # 逆序排序
     i.sort(key = lambda x:-x[1])
-    print(f"{i[0][0]} {len(i)}")
+    result.append([i[0][0],len(i)])
+# 按照名称的字母顺序进行排序。
+result.sort(key = lambda x:x[0])
+for i in result:
+    print(f"{i[0]} {i[1]}")
