@@ -39,9 +39,6 @@ class node(object):
 # 利用先序遍历和BST的性质建树
 # 本来想利用BST中序是递增，BST's Image中序是递减的性质，可是如果树都没建好，没法用
 # 用栈来构建BST树
-def createBST(preOrder :list, root :node) -> bool:
-
-def createBstImage(preOrder :list, root :node) -> bool:
 
 # 后序遍历
 def postOrder(root :node):
