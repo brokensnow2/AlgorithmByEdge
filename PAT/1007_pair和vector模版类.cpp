@@ -9,8 +9,14 @@
     std::pair是一个可以存储两个元素的结构。这两个元素可以是任何类型，可以相同，也可以不同。
     std::pair提供了两个公共成员变量：first和second，分别用于访问存储在pair中的第一个和第二个元素。
     例如，std::pair<int, std::string>可以存储一个整数和一个字符串。
- * 
- * 
+    int main() {
+        pair<std::string, int> pair = make_pair("Hello", 5);
+
+        // 输出pair中的元素
+        std::cout << pair.first << " " << pair.second << std::endl;
+
+        return 0;
+    }
  * @param seq 
  * @return std::pair<int, std::pair<int, int> > 
  */
