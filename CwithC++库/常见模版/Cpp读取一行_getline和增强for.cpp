@@ -5,7 +5,7 @@
 
 int main() {
     std::string line;
-    std::getline(std::cin, line); // 读取一行
+    std::getline(std::cin, line); // 读取一行，第三个参数默认是换行符
     /**
      * @brief std::istringstream iss(line);是C++中的一行代码，
      * 它创建了一个std::istringstream（输入字符串流）对象iss，并使用字符串line初始化它。
@@ -27,6 +27,20 @@ int main() {
     }
 
     // 输出分割后的字符串
+    /**
+    *for (const auto& word : words): 这是一个基于范围的for循环，
+    它遍历words容器中的每个元素。const auto&是一个类型说明符，
+    它自动推断words中元素的类型，并创建一个名为word的常量引用。
+    *
+
+    *在C++中，const关键字用于声明一个常量，也就是说，一旦被赋值，就不能改变。在这段代码中，
+    const auto& word表示word是一个引用，它引用的对象是不可修改的。
+	使用const有几个好处：
+
+		保护数据：如果你不想让数据被修改，可以使用const来保护它。
+		提高代码可读性：const可以告诉读代码的人这个数据是不会被改变的。
+		优化性能：编译器可能会对const数据进行优化。
+    */
     for (const auto& word : words) {
         std::cout << word << std::endl;
     }
