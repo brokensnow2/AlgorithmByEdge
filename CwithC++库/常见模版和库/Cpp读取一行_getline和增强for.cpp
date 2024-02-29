@@ -2,7 +2,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-
+//可以用来读取一行未知个数的数字和字符
 int main() {
     std::string line;
     std::getline(std::cin, line); // 读取一行，第三个参数默认是换行符
