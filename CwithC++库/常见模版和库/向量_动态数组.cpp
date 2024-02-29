@@ -16,6 +16,7 @@
 指定大小和初始值：创建一个指定大小的vector对象，并给所有元素赋予指定的初始值，例如vector<int> myVector(10, 1);，这将创建一个包含10个元素的vector，每个元素的值都是1。
 
 列表初始化：使用花括号 {} 包含的初始值列表来创建vector对象，例如vector<int> myVector = {1, 2, 3, 4, 5};。
+这是C++11引入的列表初始化（也称为统一初始化）语法。
 
 复制构造函数：使用另一个vector对象来创建新的vector对象，例如vector<int> newVector(myVector);，这将创建一个与myVector具有相同元素的新vector。
 
@@ -74,6 +75,15 @@
     v.clear(); // 删除向量v中的所有元素
     ```
 
+begin(): 返回一个迭代器，指向向量中的第一个元素。
+end(): 返回一个迭代器，指向向量中最后一个元素的下一个位置。
+size(): 返回向量中元素的数量。
+empty(): 如果向量为空，返回true，否则返回false。
+push_back(): 在向量的末尾添加一个元素。
+pop_back(): 删除向量末尾的元素。
+insert(): 在指定位置插入一个或多个元素。
+erase(): 删除指定位置的元素或一范围的元素。
+clear(): 删除向量中的所有元素。
 */
 using namespace std;
 
