@@ -13,7 +13,6 @@ using namespace std; // 使用标准命名空间
 
 int main()
 {
-	//
     string line;
     getline(cin, line);
     istringstream iss(line);
@@ -22,7 +21,6 @@ int main()
         while (getline(iss, word, ' ')) { // 根据空格分割
         array.push_back(stoi(word));
     }
-
 
     sort(array.begin(),array.end());
     cout << array[array.size()-1] << endl;

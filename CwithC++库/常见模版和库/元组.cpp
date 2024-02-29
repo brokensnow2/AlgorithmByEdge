@@ -38,6 +38,8 @@ int main() {
 
     std::cout << "修改后的元组: " << std::get<0>(t) << ", " << std::get<1>(t) << ", " << std::get<2>(t) << std::endl;
 
+
+	//解包
 	auto[a,b,c] = t;
     std::cout << a << b << c << std::endl;
     return 0; // 程序正常结束

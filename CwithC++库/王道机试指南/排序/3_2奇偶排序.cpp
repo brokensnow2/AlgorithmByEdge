@@ -13,21 +13,39 @@ using namespace std; // 使用标准命名空间
 
 int main()
 {
-	//
+	//读取一行
     string line;
     getline(cin, line);
     istringstream iss(line);
-    vector<int> array;
+    vector<int> OddArray;
+    vector<int> EvenArray;
     string word;
-        while (getline(iss, word, ' ')) { // 根据空格分割
-        array.push_back(stoi(word));
+
+    //分别操作数字
+    while (getline(iss, word, ' ')) { // 根据空格分割
+    	if (stoi(word) % 2 == 0)
+    	{
+			EvenArray.push_back(stoi(word));
+    	}
+    	else
+    	{
+        	OddArray.push_back(stoi(word));
+    	}
+    }
+	
+    //排序
+    sort(EvenArray.begin(),EvenArray.end());
+    sort(OddArray.begin(),OddArray.end());
+
+	//输出
+    for (int i = 0; i < EvenArray.size(); i++)
+    {
+        cout << EvenArray[i] << " ";
     }
 
-    sort(array.begin(),array.end());
-    cout << array[array.size()-1] << endl;
-    for (int i = 0; i < array.size()-1; i++)
+    for (int i = 0; i < OddArray.size(); i++)
     {
-        cout << array[i] << " ";
+        cout << OddArray[i] << " ";
     }
 
 }
