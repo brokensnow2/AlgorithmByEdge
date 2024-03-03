@@ -1,34 +1,33 @@
-extern "C" {
-#include <stdio.h> // 引入C标准输入输出库：scanf，printf
-#include <string.h> // 引入字符串处理库：strcat，strcmp
-#include <math.h>
-}
-
-#include <sstream> // 引入字符串流库：istringstream iss()
-#include <algorithm> // 引入C++的算法库：sort，binary_search
-#include <iostream> // 引入C++标准输入输出库：cin，cout，getline
-#include <string> // 引入C++的string类
-
-using namespace std;
+#include <iostream>
+#include <cmath>
 
 int main()
 {
-    int x,y;
-    int EvenPow2 = 0,OddPow3 = 0;
-    while(scanf("%d%d",&x,&y) != EOF)
+    int m, n;
+    long long EvenPow2 = 0, OddPow3 = 0;
+    while(std::cin >> m >> n)
     {
-        for(;x <= y; x++)
+        if(m > n)
         {
-            if(x % 2 == 0)
-            {
-				EvenPow2 += pow(x,2);
-            }
-            else
-            	OddPow3 += pow(x,3);
+            std::swap(m, n);
         }
 
-        printf("%d %d\n",EvenPow2,OddPow3);
+        for(int i = m; i <= n; i++)
+        {
+            if(i % 2 == 0)
+            {
+                EvenPow2 += std::pow(i, 2);
+            }
+            else
+            {
+                OddPow3 += std::pow(i, 3);
+            }
+        }
+
+        std::cout << EvenPow2 << " " << OddPow3 << std::endl;
         EvenPow2 = 0;
         OddPow3 = 0;
     }
+
+    return 0;
 }

@@ -17,16 +17,20 @@ int main()
     int n;
 
 	// 注意不能scanf("%d",&n) != 0 ：因为scanf返回的是个数
-    while(scanf("%d",&n) != EOF && n != 0)
+    while(scanf("%d",&n) != EOF )
     {
+		if(n == 0)
+		{
+			break;
+		}
         //结果
     	int pos=0,neg=0,zero=0;
 		//
-		int temp;
+		double temp;
 
     	for (int i = 0;i < n; i++)
     	{
-			scanf("%d",&temp);
+			scanf("%lf",&temp);
         	if(temp < 0)
         		neg += 1;
             else if(temp > 0)

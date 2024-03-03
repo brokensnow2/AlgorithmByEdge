@@ -120,7 +120,7 @@ int main()
     int num;
     int array[20];
     int i = 0;
-    freopen("/root/AlgorithmByEdge/CwithC++库/常见模版/C_Read.txt","r",stdin);
+    //freopen("/root/AlgorithmByEdge/CwithC++库/常见模版/C_Read.txt","r",stdin);
     while (scanf("%d",&num) != EOF)
     {
         array[i] = num;
@@ -130,7 +130,7 @@ int main()
     {
         printf("%d ",array[j]);
     }
-	printf("\n")
+	printf("\n");
 	
 	//去往标准输出的输出被重定向到名为myfile.txt的文件。
     freopen("./myfile.txt", "w", stdout);
