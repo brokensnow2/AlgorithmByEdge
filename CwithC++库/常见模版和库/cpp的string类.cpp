@@ -22,6 +22,9 @@
  */
 #include <iostream>
 #include <string>
+#include <stdio.h>
+
+using namespace std;
 
 int main() {
     std::string str1 = "Hello";
@@ -44,5 +47,21 @@ int main() {
     std::string str = cstr;
     std::cout << str << std::endl;
 
+	//ASCII 每个char8位，存的是ASCII码
+    for (int i = 0; i < str.size(); i++)
+    	printf("%d %c \n",str[i], str[i]);
+
     return 0;
 }
+
+/**
+* 其他操作：
+	1. 可以通过下标访问
+    2. insert()
+    3. erase()
+    4. clear()
+    5. find() -> index or npos
+    6. <,>,==,!=,<=,>=
+
+*
+*/
