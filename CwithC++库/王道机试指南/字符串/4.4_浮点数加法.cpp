@@ -43,16 +43,21 @@ string add(vector<string> &f1, vector<string> &f2)
     string num2 = f2[0] + f2[1];
 
     // 相加
-    string sum;
-    int carry = 0;
-    for (int i = num1.size() - 1; i >= 0; --i) {
-        int tmp = (num1[i] - '0') + (num2[i] - '0') + carry;
-        sum.insert(sum.begin(), tmp % 10 + '0');
-        carry = tmp / 10;
-    }
-    if (carry > 0) {
-        sum.insert(sum.begin(), carry + '0');
-    }
+	string sum; // 创建一个空字符串用于存储结果
+
+	int carry = 0; // 初始化进位为0
+
+	for (int i = num1.size() - 1; i >= 0; --i) 
+    { // 从两个数字的最后一位（即最低位）开始，向前遍历每一位
+    	int tmp = (num1[i] - '0') + (num2[i] - '0') + carry; // 计算当前位的和，包括进位
+    	sum.insert(sum.begin(), tmp % 10 + '0'); // 计算当前位的值（和对10的余数），并将其插入到结果字符串的开头
+    	carry = tmp / 10; // 更新进位（和除以10的商）
+	}
+
+	if (carry > 0) 
+    { // 如果最后还有进位
+    	sum.insert(sum.begin(), carry + '0'); // 将进位插入到结果字符串的开头
+	}
 
     // 插入小数点
     sum.insert(sum.begin() + maxP_size, '.');
