@@ -17,6 +17,10 @@ extern "C" {
 #include <vector>
 #include <tuple>
 #include <queue>
+/**
+accumulate是C++中的一个函数，定义在<numeric>头文件中。它主要用来对指定范围内的元素进行求和，但也可以自定义一些其他操作，如范围内所有元素相乘、相除等
+*/
+#include <numeric> 
 
 using namespace std; //使用标准命名空间，省去写std::
 ```
