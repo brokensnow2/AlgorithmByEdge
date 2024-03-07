@@ -51,6 +51,39 @@ d = {}
 print(d[1])  # 抛出KeyError异常
 ```
 
-
-
 */
+
+#include <iostream>
+#include <map>
+
+using namespace std;
+
+int main() {
+    // 创建一个空的映射
+    map<string, int> m;
+
+    // 插入元素
+    m["apple"] = 1;
+    m["banana"] = 2;
+    m["cherry"] = 3;
+
+    // 访问元素
+    cout << "apple: " << m["apple"] << endl;
+
+    // 检查元素是否存在
+    if (m.find("banana") != m.end()) {
+        cout << "banana exists" << endl;
+    } else {
+        cout << "banana does not exist" << endl;
+    }
+
+    // 遍历元素
+    for (auto it = m.begin(); it != m.end(); ++it) {
+        cout << it->first << ": " << it->second << endl;
+    }
+
+    // 删除元素
+    m.erase("cherry");
+
+    return 0;
+}

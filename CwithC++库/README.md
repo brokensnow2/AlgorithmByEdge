@@ -11,7 +11,7 @@ extern "C" {
 }
 
 #include <sstream> // 引入字符串流库：istringstream iss()
-#include <algorithm> // 引入C++的算法库：sort，binary_search，min， max， max_element，count
+#include <algorithm> // 引入C++的算法库：sort，binary_search，min， max， max_element，count，find
 #include <iostream> // 引入C++标准输入输出库：cin，cout，getline
 #include <string> // 引入C++的string类
 #include <vector>
