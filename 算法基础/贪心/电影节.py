@@ -31,3 +31,28 @@ Sample Output
 电影不冲突且结束时间最早的电影。
 
 """
+
+def max_movies(movies):
+    # 按结束时间从小到大排序
+    movies.sort(key=lambda x: x[1])
+    
+    count = 0
+    end_time = -1
+    
+    for movie in movies:
+        start, end = movie
+        if start >= end_time:
+            # 选择不冲突的电影
+            count += 1
+            end_time = end
+    
+    return count
+
+if __name__ == "__main__":
+    n = int(input())
+    movies = []
+    for _ in range(n):
+        start, end = map(int, input().split())
+        movies.append((start, end))
+    
+    print(max_movies(movies))

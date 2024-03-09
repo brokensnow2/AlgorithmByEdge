@@ -29,7 +29,7 @@ using namespace std;
 来计算两个数的最大公约数（Greatest Common Divisor，GCD）。
 欧几里得算法是一种非常古老的算法，它的原理是基于以下的定理：
 两个整数的最大公约数等于其中较小的那个数和两数的差的最大公约数。
-
+https://oi-wiki.org/math/number-theory/gcd/
 */
 
 // a > b; 不然下次调用时a,b互换
