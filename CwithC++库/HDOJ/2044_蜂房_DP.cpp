@@ -33,11 +33,7 @@ int main()
         dp[0] = 0;
         dp[1] = 1;
         dp[2] = 1;
-        cout << getStep(b-a+1, dp);
-        if (n != 0)
-        {
-            cout << endl;
-        }
+        cout << getStep(b-a+1, dp) << endl;
     }
     return 0;
 }
