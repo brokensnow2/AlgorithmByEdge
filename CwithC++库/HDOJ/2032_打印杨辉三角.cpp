@@ -16,6 +16,7 @@ using namespace std;
 
 // 定义一个函数来生成杨辉三角
 void generatePascalTriangle(int numRows) {
+    // 滚动数组
     vector<int> row(numRows, 1); // 创建一个大小为numRows的向量，所有元素初始化为1
     for (int i = 0; i < numRows; i++) { // 对于杨辉三角的每一行
 		// 从第三行开始，反正1，2行都是1
