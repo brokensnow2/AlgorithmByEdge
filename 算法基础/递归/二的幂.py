@@ -29,7 +29,7 @@ def power_of_two(n):
     elif n == 3:
         return "2+2(0)"
     else:
-        power = len(bin(n)) - 3
+        power = len(bin(n)) - 3 # 减去0b，而且因为第n位是n-1次方
         remainder = n - 2 ** power
         if remainder == 0:
             return "2(" + power_of_two(power) + ")"
