@@ -35,6 +35,7 @@ int main()
         {
             int x;
             cin >> x;
+            // 逐个插入
             root = Insert(root, x, -1);
         }
         
