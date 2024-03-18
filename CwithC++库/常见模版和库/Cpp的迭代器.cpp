@@ -1,10 +1,16 @@
 #include <vector>
 #include <iostream>
+
+using namespace std;
 int main() {
     std::vector<int> vec = {1, 2, 3, 4, 5};
+    int array[] = {1, 2, 3, 4, 5};
     for(auto it = vec.begin(); it != vec.end(); ++it) {
         std::cout << *it << " ";
     }
+    cout << "==============" << endl;
+    for (int i = 0; i < 5; i++)
+    	cout << *(array + i) << endl; // C++指针加一就指向下一个元素
     return 0;
 }
 /**

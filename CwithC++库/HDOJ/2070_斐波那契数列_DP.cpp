@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    __int64_t fib[51]; // 存储斐波那契数列的值
+    fib[0] = 0;
+    fib[1] = 1;
+    for(int i = 2; i <= 50; ++i) {
+        fib[i] = fib[i-1] + fib[i-2]; // 计算斐波那契数列的值
+    }
+
+    int n;
+    while(cin >> n ) { // 读取输入
+    	if (n == -1)
+        {
+            cout << "you can use 64bit integer: __int64" << endl;
+        }
+        cout << fib[n] << endl; // 输出结果
+    }
+
+    return 0;
+}
