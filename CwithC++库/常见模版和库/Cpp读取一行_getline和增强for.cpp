@@ -2,7 +2,8 @@
 #include <sstream>
 #include <vector>
 #include <string>
-//可以用来读取一行未知个数的数字和字符
+//可以用来读取一行未知个数的数字和字符，但注意！！！只能读取字符串，一个空格，字符串，一个空格这样的。
+//想读取中间有多个空格的，见2093.cpp，使用find_first_not_of(' '),不然会有空字符混入其中
 int main() {
     std::string line;
     std::getline(std::cin, line); // 读取一行，第三个参数默认是换行符

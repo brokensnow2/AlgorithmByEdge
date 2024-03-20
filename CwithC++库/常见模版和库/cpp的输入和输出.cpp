@@ -5,7 +5,8 @@ using namespace std;
 
 int main()
 {
-    cout << setw(10) << "Hello" << endl;
+    // 不加负号右对齐，不然左对齐
+    cout << setw(-10) << "Hello" << endl;
 
 	int num = 42;
     cout << setw(5) << setfill('0') << num << endl;
