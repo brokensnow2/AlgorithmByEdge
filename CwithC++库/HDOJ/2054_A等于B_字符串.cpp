@@ -27,12 +27,16 @@ NO
 
 using namespace std;
 
-string strip(string str) //模仿Python的strip函数
+string strip(string s) //模仿Python的strip函数
 {
-	int index = 0;
-    while (str[index] == '0')
-		++index;
-    return index == str.size() ? "0" : str.substr(index);
+    // 去除前导零
+    s.erase(0, s.find_first_not_of('0'));
+    // 如果字符串中包含'.', 则去除末尾无效的零
+    if (s.find('.') != std::string::npos) {
+        while (s.back() == '0') s.pop_back(); // 当末尾字符为'0'时，删除该字符
+        if (s.back() == '.') s.pop_back();    // 如果末尾字符为'.', 删除该字符
+    }
+    return s;
 }
 
 int main()

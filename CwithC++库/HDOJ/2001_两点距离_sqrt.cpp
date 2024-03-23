@@ -1,24 +1,18 @@
-extern "C" {
-#include <stdio.h> // 引入C标准输入输出库：scanf，printf
-#include <string.h> // 引入字符串处理库：strcat，strcmp
-#include <math.h>
-}
-
-#include <sstream> // 引入字符串流库：istringstream iss()
-#include <algorithm> // 引入C++的算法库：sort，binary_search
+#include <cmath>
+#include <cstdio>
 #include <iostream> // 引入C++标准输入输出库：cin，cout，getline
-#include <string> // 引入C++的string类
+#include <iomanip>
 
 using namespace std;
 
 int main()
 {
     // 定义两点坐标
-    double x[2],y[2];
+    double x[2],y[2]; // x[2]: x[0]:x的横坐标，x[1]:x的纵坐标
 	while(scanf("%lf %lf %lf %lf",&x[0],&x[1],&y[0],&y[1]) != EOF)
     {
         double ans = (y[1]-x[1])*(y[1]-x[1]) + (y[0]-x[0])*(y[0]-x[0]);
-        printf("%.2lf\n",sqrt(ans));
+        cout << fixed << setprecision(2) << sqrt(ans) << endl;
     }
 
 }

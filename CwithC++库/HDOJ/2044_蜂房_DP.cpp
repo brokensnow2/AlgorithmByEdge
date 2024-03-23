@@ -27,12 +27,18 @@ int main()
         cin >> a >> b;
         // -1 表示没有填充
         // dp[n] 表示从 1 到 n 的路径数；
-        // 规定 dp[1]、dp[2] 为 1。
+        // 规定 dp[1]、dp[2] 为 0。
         // dp[n] = dp[n-1] + dp[n-2]
+        if (a < b)
+        {
+			cout << 0 << endl;
+            break;
+        }
         vector<int> dp(b-a+2, -1);
         dp[0] = 0;
         dp[1] = 1;
         dp[2] = 1;
+        dp[3] = 2;
         cout << getStep(b-a+1, dp) << endl;
     }
     return 0;

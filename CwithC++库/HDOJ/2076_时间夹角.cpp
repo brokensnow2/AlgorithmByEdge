@@ -20,7 +20,7 @@ int main(){
         double minute_angle = m * 6 + s * 0.1;
         double angle = abs(hour_angle - minute_angle);
         if(angle > 180)
-            angle = 360 - angle;
+            angle = 360 - (int)angle;
         cout << (int)angle << endl;
     }
     return 0;

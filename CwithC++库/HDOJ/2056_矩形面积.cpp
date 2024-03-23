@@ -41,7 +41,7 @@ int main()
 		double width = min(max(x1, x2), max(x3, x4)) - max(min(x1, x2), min(x3, x4));
         double height = min(max(y1, y2), max(y3, y4)) - max(min(y1, y2), min(y3, y4));
         double S = width * height;
-        if (S < 0)
+        if (height <= 0 || width <= 0)
         	printf("0.00\n");
         else
         	cout << fixed << setprecision(2) << S << endl;
