@@ -22,9 +22,10 @@ bool is_valid_identifier(const string& s) {
 int main() {
     int n;
     cin >> n;
+    getchar();
     for (int i = 0; i < n; ++i) {
         string s;
-        cin >> s;
+        getline(cin,s);
         cout << (is_valid_identifier(s) ? "yes" : "no") << endl;
     }
     return 0;
