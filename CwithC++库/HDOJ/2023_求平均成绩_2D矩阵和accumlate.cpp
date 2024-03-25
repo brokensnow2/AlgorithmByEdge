@@ -38,70 +38,72 @@ int main()
 {
     //Students, Courses
     int n, m;
-    cin >> n >> m;
+    while (cin >> n >> m)
+	{
+    	int temp;
+		// 每门课成绩总分
+    	vector<int> grades(m);
+    	// 二维数组，每一个是stu
+    	vector<vector<int>> stus(n);
+		// 读取输入
+    	for (int i = 0; i < n; i++)
+    	{
+        	for (int j = 0; j < m; j++)
+        	{
+            	cin >> temp;
+            	stus[i].push_back(temp);
+            	grades[j] += temp;
+        	}
+    	}
 
-    int temp;
-	// 每门课成绩总分
-    vector<int> grades(m);
-    // 二维数组，每一个是stu
-    vector<vector<int>> stus(n);
-	// 读取输入
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            cin >> temp;
-            stus[i].push_back(temp);
-            grades[j] += temp;
-        }
-    }
+    	//输出第一行
+    	for (int i = 0; i < n; i++)
+    	{
+        	float sum = accumulate(stus[i].begin(), stus[i].end(), 0);
+        	float avg = sum / (float)m;
+        	if (i != 0)
+        	{
+            	printf(" ");
+        	}
+        	printf("%.2f", avg);
 
-    //输出第一行
-    for (int i = 0; i < n; i++)
-    {
-        float sum = accumulate(stus[i].begin(), stus[i].end(), 0);
-        float avg = sum / (float)m;
-        if (i != 0)
-        {
-            printf(" ");
-        }
-        printf("%.2f", avg);
+    	}
+    	printf("\n");
 
-    }
-    printf("\n");
+    	// Output second line
+    	vector<float> avg_grade;
+    	for (int i = 0; i < m; i++)
+    	{
+        	float grade_avg = (float)grades[i] / (float)n;
+        	if (i != 0)
+        	{
+            	printf(" ");
+        	}
+        	printf("%.2f", grade_avg);
+        	avg_grade.push_back(grade_avg);
+    	}
+    	printf("\n");
 
-    // Output second line
-    vector<float> avg_grade;
-    for (int i = 0; i < m; i++)
-    {
-        float grade_avg = (float)grades[i] / (float)n;
-        if (i != 0)
-        {
-            printf(" ");
-        }
-        printf("%.2f", grade_avg);
-        avg_grade.push_back(grade_avg);
-    }
-    printf("\n");
-
-    // Output third line
-    int count = 0;
-    for (int i = 0; i < n; i++)
-    {
-        bool all_above_avg = true;
-        for (int j = 0; j < m; j++)
-        {
-            if (stus[i][j] < avg_grade[j])
-            {
-                all_above_avg = false;
-                break;
-            }
-        }
-        if (all_above_avg)
-        {
-            count++;
-        }
-    }
-    printf("%d\n", count);
+    	// Output third line
+    	int count = 0;
+    	for (int i = 0; i < n; i++)
+    	{
+        	bool all_above_avg = true;
+        	for (int j = 0; j < m; j++)
+        	{
+            	if (stus[i][j] < avg_grade[j])
+            	{
+                	all_above_avg = false;
+                	break;
+            	}
+        	}
+        	if (all_above_avg)
+        	{
+            	count++;
+        	}
+    	}
+    	printf("%d\n", count);
+        printf("\n");
+    }    
     return 0;
 }

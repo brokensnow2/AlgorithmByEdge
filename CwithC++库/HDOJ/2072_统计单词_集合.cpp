@@ -17,7 +17,8 @@ int main()
 		istringstream iss(words);
         while (getline(iss, word, ' '))
         {
-            s.insert(word);
+            if (word != "") // getline的特性
+            	s.insert(word);
         }
 		cout << s.size() << endl;
         s.clear();

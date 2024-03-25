@@ -44,10 +44,12 @@ int Dijsktra(vector<vector<pair<int, int>>> &graph
             visited.insert(node.first);
             for (auto i : graph[node.first])
             {
-				q.push(make_pair(i.first, i.second+node.second));
+                if (visited.find(i.first) == visited.end())
+					q.push(make_pair(i.first, i.second+node.second));
             }
         }
     }
+    return INT32_MAX;
 }
 
 int main()

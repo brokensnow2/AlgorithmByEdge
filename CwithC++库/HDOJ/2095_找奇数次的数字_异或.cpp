@@ -1,4 +1,5 @@
 #include<iostream>
+#include <cstdio>
 /**
  * 异或运算符（^）有一些特性使得它在这种情况下非常有用。
 
@@ -18,14 +19,16 @@
  * 
  * 
 */
+
+// todo 这题使用C++，使用G++会超时
 using namespace std;
 int main(){
     int T;
-    while(cin >> T && T){
+    while(scanf("%d", &T) && T != 0){
         int res = 0;
         for(int i = 0; i < T; i++){
             int num;
-            cin >> num;
+            scanf("%d", &num);
             res ^= num;
         }
         cout << res << endl;

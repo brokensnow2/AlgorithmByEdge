@@ -1,38 +1,32 @@
-#include <iostream> // 引入iostream库以进行输入/输出操作
-#include <vector>   // 引入vector库以使用向量数据结构
-#include <algorithm> // 引入algorithm库以使用sort函数
+#include <stdio.h>
+#include <iostream>
 
-using namespace std; // 使用标准命名空间
+using namespace std;
 
-vector<int> subset; // 声明一个向量来存储子集序列
+int main(void)
+{
+    int i, n, s[21];
+    __int64_t m, t;
+    __int64_t c[21] = {0};
 
-// 函数生成An的所有子集序列，按字典顺序排列
-void generateSubsets(int n, int m, int idx = 1) {
-    if (m == 0) { // 如果m变为0
-        for (int i = 0; i < subset.size(); i++) { // 遍历子集
-            cout << subset[i] << " "; // 打印子集的元素
+    for (i = 1; i < 21; i++)
+        c[i] = c[i-1] * (i - 1) + 1;
+        
+    while (cin >> m >> t)
+    {
+        for (i = 0; i < 21; i++)
+            s[i] = (int)i;
+        while (n-- && m)
+        {
+            if (t = m / c[n+1] + ((m % c[n+1]) ? 1 : 0))
+            {
+                printf("%d", s[t]);
+                for (i = (int)t; i <= n; s[i]=s[i+1], i++);
+                m -= (t - 1) * c[i] + 1;
+                putchar(m ? ' ' : '\n');
+            }
         }
-        cout << endl; // 打印换行符
-        return; // 从函数返回
     }
 
-    for (int i = idx; i <= n; i++) { // 从idx到n循环
-        subset.push_back(i); // 将i添加到子集
-        generateSubsets(n, m - 1, i + 1); // 递归调用函数以获取下一个元素
-        subset.pop_back(); // 从子集中删除最后一个元素
-    }
-}
-
-int main() { // 主函数开始
-    int t; // 声明一个整数t来存储测试用例的数量
-    cin >> t; // 输入测试用例的数量
-
-    while (t--) { // 遍历每个测试用例
-        int n, m; // 声明整数n和m，分别存储元素总数和第m个子集序列
-        cin >> n >> m; // 输入元素总数和第m个子集序列
-
-        generateSubsets(n, m); // 调用函数生成An的所有子集序列，按字典顺序排列
-    }
-
-    return 0; // 主函数结束
+    return 0;
 }
