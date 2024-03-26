@@ -7,7 +7,7 @@
 
 using namespace std;
 
-bool is_triangle(int a, int b, int c) {
+bool is_triangle(double a, double b, double c) {
     // 判断是否满足三角形条件:两边之和大于第三边
     return a + b > c && a + c > b && b + c > a;
 }
@@ -16,7 +16,7 @@ int main() {
     int M;
     cin >> M;
     while (M--) {
-        int A, B, C;
+        double A, B, C;
         cin >> A >> B >> C;
         if (is_triangle(A, B, C)) {
             cout << "YES" << endl;

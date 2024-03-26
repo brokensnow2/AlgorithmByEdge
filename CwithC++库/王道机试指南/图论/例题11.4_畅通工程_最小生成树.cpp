@@ -30,7 +30,7 @@ void Init(int n)
 
 int Find(int n)
 {
-    if (Find(n) != n)
+    if (father[n] != n)
         father[n] = Find(father[n]);
     return father[n];
 }

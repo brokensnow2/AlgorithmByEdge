@@ -49,7 +49,7 @@ double sqrt_newton(int x) {
     return res;
 }
 
-神奇的算法：这是一个出自《雷神之锤3》的游戏引擎的算法，它使用了一些神奇的位操作和魔法数字来快速计算平方根的倒数76。
+神奇的算法：这是一个出自《雷神之锤3》的游戏引擎的算法，它使用了一些神奇的位操作和魔法数字来快速计算平方根的倒数。
 float InvSqrt(float x) {
     float xhalf = 0.5f * x;
     int i = *(int*)&x;
