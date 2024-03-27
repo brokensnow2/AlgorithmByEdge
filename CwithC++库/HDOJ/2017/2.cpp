@@ -1,3 +1,7 @@
+/**
+ * todo 解题思路
+ * 库函数 
+*/
 #include <cstdio>
 #include <iostream>
 #include <algorithm> // sort
