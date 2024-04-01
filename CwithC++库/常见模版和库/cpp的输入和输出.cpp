@@ -5,8 +5,9 @@ using namespace std;
 
 int main()
 {
-    // 不加负号右对齐，不然左对齐
-    cout << setw(-10) << "Hello" << endl;
+    // 不加left右对齐，不然左对齐
+    cout << left << setw(10) << setfill('0') << "Hello" ;
+	cout << "World" << endl;
 
 	int num = 42;
     cout << setw(5) << setfill('0') << num << endl;

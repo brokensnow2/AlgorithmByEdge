@@ -6,11 +6,12 @@
 using namespace std;
 
 // 定义一个函数，将字符串表示的大数除以2，并返回结果
-string Divide (string str, int x){
+string Divide (string str, int x)
+{
     int remainder = 0; // 初始化余数
     for (int i = 0; i < str.size(); i++) // 遍历字符串中的每一位
     {
-        int current = remainder * 10 + str[i] - '0'; // 计算当前的数
+        int current = remainder * 10 + (str[i] - '0'); // 计算当前的数
         str[i] = current / x + '0'; // 更新字符串中的当前位
         remainder = current % x; // 更新余数
     }

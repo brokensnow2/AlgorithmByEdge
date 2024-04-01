@@ -25,7 +25,7 @@ int main()
         int n, m; //背包容量， 物品种类
         int num = 0; // 分解后物品的数量
         cin >> n >> m;
-        for (int i = 0; i < m; i++)
+        for (int i = 0; i < m; i++) // 对每件物品分解
         {
             cin >> w[i] >> v[i] >> k[i];
             for (int j = 1; j <= k[i]; j *= 2) // 开始分解
@@ -39,6 +39,7 @@ int main()
         	{
             	value[num] = k[i] * v[i];
             	weight[num] = k[i] * w[i];
+                num++;
         	}
         }
         // 对value开始dp

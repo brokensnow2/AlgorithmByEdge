@@ -44,7 +44,7 @@ int main()
             {
             	count++;
                 precedence = value;
-            }    
+            }
         }
         cout << value << endl;
     }

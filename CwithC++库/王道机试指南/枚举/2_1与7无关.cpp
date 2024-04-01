@@ -17,17 +17,17 @@ bool isHave7(int n)
 {
     while (n != 0)
     {
-        if (n == 7)
+        if (n%10 == 7) // 最低位有7
         	return true;
         else
-        	n /= 10;
+        	n /= 10; // 去掉最低位
     }
     return false;
 }
 
 int main()
 {
-    int sum;
+    int sum = 0;
     int n;
     cin >> n;
     for (int i = 1; i <= n; i++)

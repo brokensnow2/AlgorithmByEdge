@@ -66,6 +66,18 @@ public:
     }
 };
 
+struct S
+{
+    int value;
+	S() : value() {};
+    S(int v) : value(v) {
+        cout << "ok" << endl;
+    };
+    void print()
+    {
+        cout << "It is S" << endl;
+    }
+};
 
 // 程序的主函数
 int main( ) {
@@ -77,6 +89,8 @@ int main( ) {
     cout << "Length of line : " << line.getLength() <<endl;
     cout << "Length of MyClass : " << my.x <<endl;
 
+	S s(100);
+    s.print();
     return 0;
 }
 
