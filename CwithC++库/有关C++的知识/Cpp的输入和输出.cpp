@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     // 不加left右对齐，不然左对齐
-    cout << left << setw(10) << setfill('0') << "Hello" ;
+    cout << left << setw(10) << setfill(' ') << "Hello" << endl;
 	cout << "World" << endl;
 
 	int num = 42;
