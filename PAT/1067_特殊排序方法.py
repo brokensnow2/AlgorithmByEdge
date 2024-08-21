@@ -8,8 +8,43 @@
 每个输入文件包含一个测试用例，给出正N（≤10^5)然后是{0，1，…，N−1}的置换序列。一行中的所有数字都用空格隔开。
 输出规格：
 对于每种情况，只需在一行中打印对给定排列排序所需的最小交换次数。
-毫无疑问：最后一步是将0和第一个元素交换--因为0肯定是第一个元素，所以0应该处在第一个元素该在的位置才能成功。
-        所以0要和处在第一个元素的该在位置的那个元素交换
 """
 
 
+def isSorted(l :list):
+    for i in range(len(l)):
+        if i == l[i]:
+            pass
+        else:
+            return False
+    return True
+
+def swap(l :list):
+    global number
+    index1 = l.index(0)
+    if index1 != 0:
+        index2 = l.index(index1)
+        l[index1] = l[index2]
+        l[index2] = 0
+        number += 1
+    else:
+        index3 = 1
+        for _ in range(N):
+            if index3 == l[index3]:
+                index3 += 1
+            else:
+                break
+        l[0] = l[index3]
+        l[index3] = 0
+        number += 1
+
+seq = []
+N = int(input())
+seq = list(map(int, input().split()))
+
+number = 0
+
+while not isSorted(seq):
+    swap(seq)
+
+print(number)
