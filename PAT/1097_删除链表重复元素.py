@@ -33,7 +33,6 @@ Sample Output:
 00000 -15 87654
 87654 15 -1
 """
-from collections import defaultdict
 
 # 定义节点类
 class Node:
@@ -43,42 +42,58 @@ class Node:
         self.next = next
 
 # 读取输入
-startAddress, N = map(int, input().split())
+startAddress, N = input().split()
+N = int(N)
 
-# 使用字典存储所有节点，方便查找
-nodes = defaultdict(list)
+# 使用字典存储所有节点，键为字符串类型的地址
+nodes = {}
 for _ in range(N):
-    addr, value, next = map(int, input().split())
-    nodes[addr] = Node(addr, value, next)
+    addr, value, next_addr = input().split()
+    nodes[addr] = Node(addr, int(value), next_addr)
 
-# 初始化结果链表和移除链表
-result = [nodes[startAddress]]
-removed = []
+# 初始化结果链表的头和尾，以及移除链表的头和尾
+result_head = result_tail = None
+removed_head = removed_tail = None
 
-# 存放访问过的节点abs(value)集合
-visited = {abs(nodes[startAddress].key)}
-
-# 当前节点
-current = nodes[startAddress].next
+# 存放访问过的节点绝对值的集合
+visited = set()
 
 # 遍历链表
-while current != -1:
+current = startAddress
+while current != '-1':
     node = nodes[current]
-    # 如果节点的绝对值已经出现过，将其添加到移除链表
     if abs(node.key) in visited:
-        removed.append(node)
+        # 如果是移除的节点，添加到移除链表中
+        if removed_head is None:
+            removed_head = removed_tail = node
+        else:
+            removed_tail.next = node.address
+            removed_tail = node
     else:
-        # 否则，将其添加到结果链表，并将其绝对值添加到已访问集合
-        result.append(node)
+        # 如果是结果链表节点，添加到结果链表中
         visited.add(abs(node.key))
+        if result_head is None:
+            result_head = result_tail = node
+        else:
+            result_tail.next = node.address
+            result_tail = node
     current = node.next
 
+# 最后一个节点的 next 应该指向 -1
+if result_tail is not None:
+    result_tail.next = '-1'
+if removed_tail is not None:
+    removed_tail.next = '-1'
+
 # 输出结果链表
-for i in range(len(result) - 1):
-    print(f"{result[i].address:05} {result[i].key} {result[i+1].address:05}")
-print(f"{result[-1].address:05} {result[-1].key} -1")
+current = result_head
+while current is not None:
+    print(f"{current.address} {current.key} {current.next}")
+    current = nodes[current.next] if current.next != '-1' else None
 
 # 输出移除链表
-for i in range(len(removed) - 1):
-    print(f"{removed[i].address:05} {removed[i].key} {removed[i+1].address:05}")
-print(f"{removed[-1].address:05} {removed[-1].key} -1")
+current = removed_head
+while current is not None:
+    print(f"{current.address} {current.key} {current.next}")
+    current = nodes[current.next] if current.next != '-1' else None
+
