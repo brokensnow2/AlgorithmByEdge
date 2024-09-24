@@ -143,3 +143,5 @@ int main()
     fclose(stdout);
     return 0;
 }
+
+// 剩余见HDOJ2016
