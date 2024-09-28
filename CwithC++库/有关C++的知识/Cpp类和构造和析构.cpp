@@ -57,7 +57,7 @@ public:
 
 // 写法3：类似java
 class MyClass1 {
-    double length;
+    double length;  //默认是private
 public:
 	MyClass1(){}
 

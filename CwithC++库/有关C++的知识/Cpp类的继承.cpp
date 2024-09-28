@@ -1,3 +1,9 @@
+/*
+访问控制：
+
+*/
+
+
 // 父类
 class Parent {
 public:
