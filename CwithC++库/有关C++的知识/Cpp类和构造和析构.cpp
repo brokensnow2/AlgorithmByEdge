@@ -5,72 +5,80 @@
 #include <iostream>
 using namespace std;
 
-//写法1：类中只声明
-class Line {
+// 写法1：类中只声明
+class Line
+{
 public:
-    void setLength( double len );
-    double getLength( void );
-    Line();   // 这是构造函数声明
-    ~Line();  // 这是析构函数声明
+    void setLength(double len);
+    double getLength(void);
+    Line();  // 这是构造函数声明
+    ~Line(); // 这是析构函数声明
 
 private:
     double length;
 };
 
 // 成员函数定义，包括构造函数
-Line::Line(void) {
+Line::Line(void)
+{
     cout << "Object is being created" << endl;
 }
 
-Line::~Line(void) {
+Line::~Line(void)
+{
     cout << "Object is being deleted" << endl;
 }
 
-void Line::setLength( double len ) {
+void Line::setLength(double len)
+{
     length = len;
 }
 
-double Line::getLength( void ) {
+double Line::getLength(void)
+{
     return length;
 }
-
 
 // 写法2：
 /**
  * 在 C++ 中，可以在类或结构体的构造函数中使用初始化列表来初始化成员变量。
  * 初始化列表中的括号里的内容是用于初始化成员变量的参数。
- * 
+ *
  * 冒号:用于初始化类或结构体的成员变量。这种初始化方式被称为初始化列表。
- * 
+ *
  例如，在MyStruct(int val) : x(val) {}中，x(val)就是一个初始化列表。
  这意味着，当我们创建一个MyStruct的实例并传入一个参数val时，成员变量x会被初始化为val的值。
- * 
- * 
+ *
+ *
 */
-class MyClass {
+class MyClass
+{
 public:
-	int x;
-    MyClass() : x(0) {}  // 默认构造函数
-    MyClass(int val) : x(val) {}  // 带参数的构造函数
-    MyClass(const MyClass& other) : x(other.x) {}  // 复制构造函数
+    int x;
+    MyClass() : x(0) {}                           // 默认构造函数
+    MyClass(int val) : x(val) {}                  // 带参数的构造函数
+    MyClass(const MyClass &other) : x(other.x) {} // 复制构造函数
 };
 
 // 写法3：类似java
-class MyClass1 {
-    double length;  //默认是private
+class MyClass1
+{
+    double length; // 默认是private
 public:
-	MyClass1(){}
+    MyClass1() {}
 
-    MyClass1(double len){
-		length = len;
+    MyClass1(double len)
+    {
+        length = len;
     }
 };
 
 struct S
 {
     int value;
-	S() : value() {};
-    S(int v) : value(v) {
+    S() : value() {};
+    S(int v) : value(v)
+    {
         cout << "ok" << endl;
     };
     void print()
@@ -80,16 +88,35 @@ struct S
 };
 
 // 程序的主函数
-int main( ) {
-    Line line;  // 创建对象
-	MyClass my; //
+int main()
+{
+    Line line;  // 创建对象,使用类的默认构造函数不要加括号
+    MyClass my; //
     MyClass1 my1(10.0);
-    // 设置长度
-    line.setLength(6.0); 
-    cout << "Length of line : " << line.getLength() <<endl;
-    cout << "Length of MyClass : " << my.x <<endl;
+    /*
+    在C++中，`MyClass1 *my2 = new MyClass1;` 和 `MyClass1 *my2 = new MyClass1();` 的区别主要在于类的初始化方式，具体如下：
 
-	S s(100);
+    1. **`MyClass1 *my2 = new MyClass1;`**
+   - 使用不带括号的形式时，类对象会被**默认初始化**。
+   - 默认初始化意味着，如果 `MyClass1` 有用户定义的默认构造函数，系统会调用它；如果没有用户定义的构造函数（且不包含任何成员初始化列表），则不会对成员进行任何初始化。
+
+    2. **`MyClass1 *my2 = new MyClass1();`**
+   - 使用带括号的形式时，类对象会被**值初始化**。
+   - 值初始化的效果是，如果 `MyClass1` 有用户定义的默认构造函数，则调用它；如果没有用户定义的构造函数（且不包含任何成员初始化列表），会将所有成员初始化为零值或空值（对于基本数据类型为零值，对于指针为 `nullptr` 等）。
+
+    总结：
+    - 如果 `MyClass1` 有自定义默认构造函数，两者没有区别，都会调用该构造函数。
+    - 如果 `MyClass1` 没有自定义构造函数，`new MyClass1();` 会将成员初始化为零值，而 `new MyClass1;` 则不会进行任何初始化。
+
+
+    */
+    MyClass1 *my2 = new MyClass1;
+    // 设置长度
+    line.setLength(6.0);
+    cout << "Length of line : " << line.getLength() << endl;
+    cout << "Length of MyClass : " << my.x << endl;
+
+    S s(100);
     s.print();
     return 0;
 }
@@ -98,30 +125,29 @@ int main( ) {
  * @brief 在这个例子中，当对象`line`的生命周期结束时，析构函数`~Line()`会被自动调用，输出"Object is being deleted"，
  * 表示对象正在被删除¹。这就是析构函数的基本作用和使用方法。
  * 在实际编程中，析构函数常常被用来做一些清理工作，如释放对象占用的内存，关闭文件等¹。²。
- * 
- * 
+ *
+ *
  */
-
 
 /**
  * std::vector<int>::iterator it = v.begin() // v是一个vector对象
  * 在C++中，`::`运算符有两种主要的用途：
 
 1. **命名空间运算符**：第一个`::`是命名空间运算符，用于指定命名空间。
-	例如，在`std::vector<int>`中，`std`是命名空间，
+    例如，在`std::vector<int>`中，`std`是命名空间，
     `vector`是该命名空间下的一个模板类。
 
 2. **作用域解析运算符**：第二个`::`是作用域解析运算符，用于指定类或结构体的成员。
-	例如，在`std::vector<int>::iterator`中，`iterator`是`vector`类的一个成员类型。
+    例如，在`std::vector<int>::iterator`中，`iterator`是`vector`类的一个成员类型。
 
-	所以，`std::vector<int>::iterator it = v.begin();`
+    所以，`std::vector<int>::iterator it = v.begin();`
     这行代码的意思是，创建一个`std::vector<int>`的`iterator`
     类型的变量`it`，并将其初始化为`v`的起始迭代器。
- * 
- * 
+ *
+ *
  * 在C++中，.运算符用于访问类或结构体的成员，但是它只能用于对象或者结构体的实例。
  * 而::运算符用于访问类或结构体的静态成员，或者命名空间中的元素。
- * 
+ *
 */
 
 /*
