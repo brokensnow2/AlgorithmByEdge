@@ -103,5 +103,6 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "python.REPL.enableREPLSmartSend": false,
   "python.analysis.typeCheckingMode": "basic",
-  "python.analysis.autoImportCompletions": true
+  "python.analysis.autoImportCompletions": true,
+  "C_Cpp.default.compilerPath": "e:\\mingw64\\mingw64\\bin\\gcc.exe"
 }
