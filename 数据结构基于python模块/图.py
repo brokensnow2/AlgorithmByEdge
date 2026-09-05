@@ -79,6 +79,33 @@ def get_edges():
 def get_neighbors(v):
     return adj_list[v]
 
+# 检测是否有环
+def has_cycle():
+    visited = set()
+    rec_stack = set()
+
+    def dfs_cycle(v):
+        visited.add(v)
+        rec_stack.add(v)
+
+        if v in rec_stack:
+            return True
+
+        for neighbor in adj_list[v]:
+            if neighbor not in visited and dfs_cycle(neighbor):
+                return True
+            elif neighbor in rec_stack:
+                return True
+
+        rec_stack.remove(v)
+        return False
+
+    for v in range(len(adj_list)):
+        if dfs_cycle(v):
+            return True
+
+    return False
+
 # 测试代码
 add_vertex(4)
 add_edge(4, 0)

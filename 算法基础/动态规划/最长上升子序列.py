@@ -25,7 +25,7 @@
 maxLen(k) 表示以ak做为“终点”的
 最长上升子序列的长度那么:
 初始状态: maxLen (1) = 1
-maxLen(k)=max{maxLen(i):1<=i<k且a;<a,且k≠1}+1
+maxLen(k)=max{maxLen(i):1<=i<k且ai<a,且k≠1}+1
 若找不到这样的i,则maxLen(k) = 1
 maxLen(k)的值，就是在ak左边，“终点”数值小于ak，且长度
 最大的那个上升子序列的长度再加1。因为ap左边任何“终点”小于

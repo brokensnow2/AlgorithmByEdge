@@ -17,6 +17,7 @@ heapq.heappop()可以从堆中弹出最小的元素。
 # heapify(list)：此函数将列表转换为堆，以便我们可以在其上执行堆操作。
 
 
+from collections import Counter
 import heapq
 nums = [3, 1, 4, 1, 5, 9, 2, 6]
 heapq.heapify(nums)
@@ -43,3 +44,11 @@ print(heapq.nlargest(3, nums))  # 输出：[9, 6, 5]
 print(heapq.nsmallest(3, nums))  # 输出：[0, 1, 1]
 
 
+def topKFrequent(nums, k):
+    count = Counter(nums)
+    return heapq.nlargest(k, count.keys(), key=count.get)
+
+heapq.heappush(nums, 1)
+heapq.heappush(nums, 2)
+print(nums)
+print(topKFrequent(nums, 2))  # 输出：[5, 9]
